@@ -9,6 +9,56 @@ servers:
   - url: https://bookstore.optic.dev
 paths:
   /books:
+    get:
+      summary: Get a list of books
+      parameters:
+        - schema:
+            type: string
+          in: query
+          description: ID of book to fetch after
+          name: after_id
+          required: false
+        - schema:
+            type: string
+            enum:
+              - asc
+              - desc
+          in: query
+          description: Order to sort books by, defaults to asc
+          name: sort_order
+          required: false
+        - schema:
+            type: string
+            enum:
+              - created_at
+              - name
+          in: query
+          description: Book key to sort by, defaults to name
+          name: sort_key
+          required: false
+      responses:
+        200:
+          description: Book success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/BookResponse"
+                  next:
+                    type:
+                      - string
+                      - "null"
+                    description: after_id for next page
+                  has_more_data:
+                    type: boolean
+                required:
+                  - data
+                  - next
+                  - has_more_data
     post:
       summary: Create a book
       requestBody:
