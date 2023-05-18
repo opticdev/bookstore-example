@@ -1,0 +1,9 @@
+ruleset:
+  - breaking-changes
+  - naming:
+      required_on: added
+      # Different names for different parts of the spec
+      # options = "snake_case" "camelCase" "Capital-Param-Case" "param-case" "PascalCase"
+      properties: snake_case
+      pathComponents:  snake_case
+      queryParameters: snake_case
