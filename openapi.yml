@@ -205,9 +205,15 @@ components:
           type: string
         author_id:
           type: string
+        type:
+          type: string
+          enum:
+            - fiction
+            - non-fiction
       required:
         - name
         - author_id
+        - type
     BookResponse:
       type: object
       properties:
