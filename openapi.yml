@@ -7,4 +7,76 @@ info:
   version: 1.0.0
 servers:
   - url: https://bookstore.optic.dev
-paths: {}
+paths:
+  /books:
+    post:
+      summary: Create a book
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BookRequest"
+      responses:
+        201:
+          description: Successfully created book
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                required:
+                  - id
+  /books/{book_id}:
+    get:
+      summary: Get a book
+      parameters:
+        - $ref: "#/components/parameters/BookId"
+      responses:
+        200:
+          description: Book success response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BookResponse"
+
+components:
+  parameters:
+    BookId:
+      schema:
+        type: string
+      in: path
+      description: ID of book
+      name: book_id
+      required: true
+  schemas:
+    BookRequest:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    BookResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: BEfCDC5FHWelCADHR9Rcm
+        name:
+          type: string
+          example: Pride and Prejudice
+        created_at:
+          type: string
+          format: timestamp
+          example: 2023-05-18T14:29:26.384Z
+        updated_at:
+          type: string
+          format: timestamp
+          example: 2023-05-18T14:29:26.384Z
+      required:
+        - id
+        - name
+        - created_at
+        - updated_at
