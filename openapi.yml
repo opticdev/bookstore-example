@@ -40,6 +40,50 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BookResponse"
+  /author:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthorRequest"
+      responses:
+        201:
+          description: Successfully created author
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                required:
+                  - id
+  /author/{author_id}:
+    get:
+      parameters:
+        - $ref: "#/components/parameters/AuthorId"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthorResponse"
+    patch:
+      parameters:
+        - $ref: "#/components/parameters/AuthorId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        204:
+          description: Successfully updated author
 
 components:
   parameters:
@@ -50,14 +94,53 @@ components:
       description: ID of book
       name: book_id
       required: true
+    AuthorId:
+      schema:
+        type: string
+      in: path
+      description: ID of author
+      name: author_id
+      required: true
   schemas:
-    BookRequest:
+    AuthorRequest:
       type: object
       properties:
         name:
           type: string
       required:
         - name
+    AuthorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: FrCmluBlTSwwxLLEbEDCP
+        name:
+          type: string
+          example: Jane Austen
+        created_at:
+          type: string
+          format: timestamp
+          example: 2023-02-18T14:29:26.384Z
+        updated_at:
+          type: string
+          format: timestamp
+          example: 2023-03-18T14:29:26.384Z
+      required:
+        - id
+        - name
+        - created_at
+        - updated_at
+    BookRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        author_id:
+          type: string
+      required:
+        - name
+        - author_id
     BookResponse:
       type: object
       properties:
@@ -67,6 +150,9 @@ components:
         name:
           type: string
           example: Pride and Prejudice
+        author_id:
+          type: string
+          example: FrCmluBlTSwwxLLEbEDCP
         created_at:
           type: string
           format: timestamp
@@ -78,5 +164,6 @@ components:
       required:
         - id
         - name
+        - author_id
         - created_at
         - updated_at
