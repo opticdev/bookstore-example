@@ -90,6 +90,23 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BookResponse"
+    patch:
+      summary: Update a book
+      parameters:
+        - $ref: "#/components/parameters/BookId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                author_id:
+                  type: string
+      responses:
+        204:
+          description: Successfully updated book
   /author:
     post:
       requestBody:
