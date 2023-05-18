@@ -148,6 +148,9 @@ paths:
               properties:
                 name:
                   type: string
+                dateOfBirth:
+                  type: string
+                  format: timestamp
       responses:
         "204":
           description: Successfully updated author
@@ -174,6 +177,9 @@ components:
       properties:
         name:
           type: string
+        dateOfBirth:
+          type: string
+          format: timestamp
       required:
         - name
     AuthorResponse:
@@ -185,6 +191,9 @@ components:
         name:
           type: string
           example: Jane Austen
+        dateOfBirth:
+          type: string
+          format: timestamp
         created_at:
           type: string
           format: timestamp
