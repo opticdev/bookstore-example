@@ -37,7 +37,7 @@ paths:
           name: sort_key
           required: false
       responses:
-        200:
+        "200":
           description: Book success response
           content:
             application/json:
@@ -67,7 +67,7 @@ paths:
             schema:
               $ref: "#/components/schemas/BookRequest"
       responses:
-        201:
+        "201":
           description: Successfully created book
           content:
             application/json:
@@ -84,7 +84,7 @@ paths:
       parameters:
         - $ref: "#/components/parameters/BookId"
       responses:
-        200:
+        "200":
           description: Book success response
           content:
             application/json:
@@ -105,7 +105,7 @@ paths:
                 author_id:
                   type: string
       responses:
-        204:
+        "204":
           description: Successfully updated book
   /author:
     post:
@@ -115,7 +115,7 @@ paths:
             schema:
               $ref: "#/components/schemas/AuthorRequest"
       responses:
-        201:
+        "201":
           description: Successfully created author
           content:
             application/json:
@@ -131,7 +131,7 @@ paths:
       parameters:
         - $ref: "#/components/parameters/AuthorId"
       responses:
-        200:
+        "200":
           description: Successful response
           content:
             application/json:
@@ -149,7 +149,7 @@ paths:
                 name:
                   type: string
       responses:
-        204:
+        "204":
           description: Successfully updated author
 
 components:
