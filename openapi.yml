@@ -1,4 +1,5 @@
 openapi: 3.1.3
+x-optic-url: https://app.useoptic.com/organizations/32613bcd-704e-4661-85f0-7b3d75613fb0/apis/NHZgBHDASGWtM3JjjE0m5
 info:
   title: Optic Bookstore Demo Spec
   description: A demo specification for Optic
@@ -148,6 +149,9 @@ paths:
               properties:
                 name:
                   type: string
+                dateOfBirth:
+                  type: string
+                  format: timestamp
       responses:
         "204":
           description: Successfully updated author
@@ -174,6 +178,9 @@ components:
       properties:
         name:
           type: string
+        dateOfBirth:
+          type: string
+          format: timestamp
       required:
         - name
     AuthorResponse:
@@ -185,6 +192,9 @@ components:
         name:
           type: string
           example: Jane Austen
+        dateOfBirth:
+          type: string
+          format: timestamp
         created_at:
           type: string
           format: timestamp
