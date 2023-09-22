@@ -1,0 +1,16 @@
+optic-default-branch-push:
+  image: node:latest
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && OPTIC_TOKEN && $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  script:
+    - npm install -g @useoptic/optic
+    - optic run
+ 
+optic-merge-request:
+  image: node:latest
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $OPTIC_TOKEN
+  script:
+    - npm install -g @useoptic/optic
+    - export OPTIC_RESULT=0; optic run || export OPTIC_RESULT=$?
+    - if [ $OPTIC_RESULT -ne 0 ]; then exit 1; fi;
