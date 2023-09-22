@@ -1,26 +1,22 @@
 name: optic
 on:
+  pull_request:
   push:
     branches:
-      - main
-  pull_request:
-
+      - "main"
+ 
 jobs:
-  diff-all:
+  run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - uses: opticdev/action@v1
-        with:
-          # Your Optic Cloud Token
-          optic_token: ${{ secrets.OPTIC_TOKEN }}
-
-          # A GitHub token with access to create comments on pull requests
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-          # If true, standard check failures will cause this action to fail.
-          # If false, standard check failures will show in PR comments and
-          # in Optic Cloud but will not cause the action to fail
-          standards_fail: true
+ 
+      - name: Install Optic
+        run: npm install --location global @useoptic/optic
+ 
+      - name: Run Optic
+        env:
+          OPTIC_TOKEN: ${{ secrets.OPTIC_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: optic run
