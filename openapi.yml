@@ -13,7 +13,7 @@ paths:
       summary: Get a list of books
       parameters:
         - schema:
-            type: string
+            type: array
           in: query
           description: ID of book to fetch after
           name: after_id
