@@ -1,5 +1,3 @@
-⚠️ This repo has been deprecated in favor of https://github.com/opticdev/examples. ⚠️
-
 A demo repository with a book store API example.
 
 ## Local usage
