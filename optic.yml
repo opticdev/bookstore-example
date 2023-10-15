@@ -18,7 +18,7 @@ capture:
           method: GET
         - path: /books/WjE9O1d8ELCb8POiOw4pn
           method: GET
-        - path: /author/tNpOpQZbxytxTxDT15GQy
+        - path: /authors/tNpOpQZbxytxTxDT15GQy
           method: GET   
     # When you are ready, set up an actual integration that run your test suite
     # Read reference docs here: https://www.useoptic.com/docs/capturing-traffic#configuration-reference

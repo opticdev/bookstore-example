@@ -126,7 +126,7 @@ paths:
                     type: string
                 required:
                   - id
-  /author/{author_id}:
+  /authors/{author_id}:
     patch:
       parameters:
         - $ref: "#/components/parameters/AuthorId"
@@ -169,6 +169,9 @@ components:
     AuthorResponse:
       type: object
       properties:
+        id:
+          type: string
+          example: FrCmluBlTSwwxLLEbEDCP
         name:
           type: string
           example: Jane Austen
@@ -181,6 +184,7 @@ components:
           format: timestamp
           example: 2023-03-18T14:29:26.384Z
       required:
+        - id
         - name
         - created_at
         - updated_at
