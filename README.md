@@ -36,34 +36,26 @@ Run:
 optic diff openapi.yml --check --web
 ```
 
-A visual API Changelog is generated and opened in your browser. It shows you exactly which endpoints were changed, and flags any design or compatibility issues:
+A visual API Changelog is generated and opened in your browser. It shows you exactly which endpoints were changed, and flags any design or compatibility issues: 
 
 ![alt](https://www.useoptic.com/changelog2.jpg)
 
-## Other things to try
-- Make a breaking change (like adding a required query parameter)
-- [Configure an API Style guide](https://useoptic.com/docs/style-guide)
-- Try Optic in your own repo
-- Check out the example GitHub Actions and GitLab CI workflow files to see how Optic runs in your CI.  
 
 ---
 
+ 
 ## Simulate a CI Run
-Optic is designed to run in Pull Requests and give developers actionable feedback on their APIs changes before they merge. You can see what this looks like by running `optic run` locally. It finds all the OpenAPI specifications in your repository, checks that the specs are accurate, and then runs the breaking change + governance checks. 
 
+Optic is designed to run in Pull Requests and give developers actionable feedback on their APIs changes before they merge. You can see what this looks like by running `optic run` locally. It finds all the OpenAPI specifications in your repository, checks that the specs are accurate, and then runs the breaking change + governance checks. 
+ 
 ```bash
 optic run
 ```
 
 You'll see a link to the changelog in the CI output and a link to your API documentation on Optic Cloud: 
 
-![alt](http://localhost:3000/img/bookstore.png)
+![alt](http://useoptic.com/img/bookstore.png)
 
-## Add Optic to your CI setup
-The repo is setup with Gitlab CI and Github Action configuration files:
-- fork the repository
-- grab an Optic organization token from the `tokens` tab in the [webapp](https://app.useoptic.com/) and set it as `OPTIC_TOKEN` in your CI env
-- add a `GITHUB_TOKEN` or `OPTIC_GITLAB_TOKEN` with comment permission to your CI env (Optional but recommended. More about this [in the docs](https://useoptic.com/docs/setup-ci#configure-commenting-on-pull-requests-optional))
-- create a pull request containing breaking changes in `openapi.yml` to see Optic in action
+This repo has example CI workflows for GitLab (`.gitlab-ci.yml`) and GitHub (`.github/workflows/optic.yml`) that show how to set up Optic in your CI pipeline. [Full instructions are here](https://useoptic.com/docs/setup-ci)
 
-[Full instructions here](https://useoptic.com/docs/setup-ci)
+![alt](https://www.useoptic.com/img/bot.png)
