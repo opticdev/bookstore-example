@@ -169,9 +169,6 @@ components:
     AuthorResponse:
       type: object
       properties:
-        id:
-          type: string
-          example: FrCmluBlTSwwxLLEbEDCP
         name:
           type: string
           example: Jane Austen
@@ -184,7 +181,6 @@ components:
           format: timestamp
           example: 2023-03-18T14:29:26.384Z
       required:
-        - id
         - name
         - created_at
         - updated_at
@@ -202,9 +198,7 @@ components:
       type: object
       properties:
         id:
-          oneOf:
-            - type: number
-            - type: string
+          type: number
         name:
           type: string
           example: Pride and Prejudice
@@ -216,11 +210,8 @@ components:
           type: string
           format: timestamp
           example: 2023-05-18T14:29:26.384Z
-        author_id:
-          type: string
       required:
         - id
         - name
-        - author_id
         - created_at
         - updated_at
