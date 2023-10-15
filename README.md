@@ -14,5 +14,5 @@ The repo is setup with Gitlab CI and Github Action configuration files:
 - create a pull request containing breaking changes in `openapi.yml` to see Optic in action
 
 ## Advanced `run` configuration
-- [API governance](https://useoptic.com/docs/lint-openapi)
+- [API governance](https://useoptic.com/docs/style-guide)
 - [API contract testing](https://www.useoptic.com/docs/verify-openapi)

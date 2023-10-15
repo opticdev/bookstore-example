@@ -127,16 +127,6 @@ paths:
                 required:
                   - id
   /author/{author_id}:
-    get:
-      parameters:
-        - $ref: "#/components/parameters/AuthorId"
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AuthorResponse"
     patch:
       parameters:
         - $ref: "#/components/parameters/AuthorId"
@@ -212,14 +202,12 @@ components:
       type: object
       properties:
         id:
-          type: string
-          example: BEfCDC5FHWelCADHR9Rcm
+          oneOf:
+            - type: number
+            - type: string
         name:
           type: string
           example: Pride and Prejudice
-        author_id:
-          type: string
-          example: FrCmluBlTSwwxLLEbEDCP
         created_at:
           type: string
           format: timestamp
@@ -228,6 +216,8 @@ components:
           type: string
           format: timestamp
           example: 2023-05-18T14:29:26.384Z
+        author_id:
+          type: string
       required:
         - id
         - name
