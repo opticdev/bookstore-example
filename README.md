@@ -30,7 +30,7 @@ optic capture openapi.yml --update interactive
 
 Optic's `diff` command tests that API changes are backwards compatible, and that new and existing API endpoints follow your style guide. The style guide is configured in the `optic.yml` file. 
 
-Run: 
+Compute a diff:
 
 ```
 optic diff openapi.yml --check --web

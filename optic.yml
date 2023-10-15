@@ -1,15 +1,15 @@
 ruleset:
   - breaking-changes
-  # - naming:
-  # required_on: added
-  # properties: snake_case
-  # pathComponents:  snake_case
-  # queryParameters: snake_case
+  - naming:
+      required_on: always
+      properties: camelCase
+      pathComponents:  snake_case
+      queryParameters: snake_case
 capture:
   openapi.yml:
     # 🔧 Runnable example with simple get requests. 
     # Run with "optic capture openapi.yml --update interactive" 
-    # You can change the server and the 'requests' section to experiment
+    # You can run your actual tests through the Optic proxy with the `command` option (next example)
     server:
       url: https://api.useoptic.com/
     requests:
