@@ -224,7 +224,7 @@ components:
           type: string
           example: Pride and Prejudice
         author_id:
-          type: string
+          type: number
           example: FrCmluBlTSwwxLLEbEDCP
         created_at:
           type: string
