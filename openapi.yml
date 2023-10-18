@@ -33,7 +33,7 @@ paths:
               - created_at
               - name
           in: query
-          description: Book key to sort by, defaults to name
+          description: Book key to sort by, defaults to name.
           name: sort_key
           required: false
       responses:
