@@ -3,12 +3,12 @@ ruleset:
   - naming:
       required_on: always
       properties: camelCase
-      pathComponents:  snake_case
+      pathComponents: snake_case
       queryParameters: snake_case
 capture:
   openapi.yml:
-    # 🔧 Runnable example with simple get requests. 
-    # Run with "optic capture openapi.yml --update interactive" 
+    # 🔧 Runnable example with simple get requests.
+    # Run with "optic capture openapi.yml --update interactive"
     # You can run your actual tests through the Optic proxy with the `command` option (next example)
     server:
       url: https://api.useoptic.com/
@@ -19,13 +19,13 @@ capture:
         - path: /books/WjE9O1d8ELCb8POiOw4pn
           method: GET
         - path: /authors/tNpOpQZbxytxTxDT15GQy
-          method: GET   
+          method: GET
     # When you are ready, set up an actual integration that run your test suite
     # Read reference docs here: https://www.useoptic.com/docs/capturing-traffic#configuration-reference
     # server:
     #   # 🔧 Update this to the command to run your server.
     #   # Optional: If omitted, Optic assumes the server is running or started elsewhere.
-    #   command: npm dev 
+    #   command: npm dev
     #   # 🔧 Update this url to where your server can be reached.
     #   url: http://localhost:8080
     # requests:

@@ -26,18 +26,18 @@ paths:
           in: query
           description: Order to sort books by, defaults to asc
           name: sort_order
-          required: false
+          required: true
         - schema:
             type: string
             enum:
               - created_at
               - name
           in: query
-          description: Book key to sort by, defaults to name
+          description: Book key to sort by, defaults to name.
           name: sort_key
           required: false
       responses:
-        "200":
+        '200':
           description: Book success response
           content:
             application/json:
@@ -47,11 +47,11 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: "#/components/schemas/BookResponse"
+                      $ref: '#/components/schemas/BookResponse'
                   next:
                     type:
                       - string
-                      - "null"
+                      - 'null'
                     description: after_id for next page
                   has_more_data:
                     type: boolean
@@ -65,9 +65,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/BookRequest"
+              $ref: '#/components/schemas/BookRequest'
       responses:
-        "201":
+        '201':
           description: Successfully created book
           content:
             application/json:
@@ -82,18 +82,18 @@ paths:
     get:
       summary: Get a book
       parameters:
-        - $ref: "#/components/parameters/BookId"
+        - $ref: '#/components/parameters/BookId'
       responses:
-        "200":
+        '200':
           description: Book success response
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BookResponse"
+                $ref: '#/components/schemas/BookResponse'
     patch:
       summary: Update a book
       parameters:
-        - $ref: "#/components/parameters/BookId"
+        - $ref: '#/components/parameters/BookId'
       requestBody:
         content:
           application/json:
@@ -105,7 +105,7 @@ paths:
                 author_id:
                   type: string
       responses:
-        "204":
+        '204':
           description: Successfully updated book
   /author:
     post:
@@ -113,9 +113,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/AuthorRequest"
+              $ref: '#/components/schemas/AuthorRequest'
       responses:
-        "201":
+        '201':
           description: Successfully created author
           content:
             application/json:
@@ -126,10 +126,20 @@ paths:
                     type: string
                 required:
                   - id
-  /authors/{author_id}:
+  /author/{author_id}:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/AuthorId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorResponse'
     patch:
       parameters:
-        - $ref: "#/components/parameters/AuthorId"
+        - $ref: '#/components/parameters/AuthorId'
       requestBody:
         content:
           application/json:
@@ -139,8 +149,14 @@ paths:
                 name:
                   type: string
       responses:
-        "204":
+        '204':
           description: Successfully updated author
+    delete:
+      parameters:
+        - $ref: '#/components/parameters/AuthorId'
+      responses:
+        '204':
+          description: Successfully deleted author
 
 components:
   parameters:
@@ -202,10 +218,14 @@ components:
       type: object
       properties:
         id:
-          type: number
+          type: string
+          example: BEfCDC5FHWelCADHR9Rcm
         name:
           type: string
           example: Pride and Prejudice
+        author_id:
+          type: number
+          example: FrCmluBlTSwwxLLEbEDCP
         created_at:
           type: string
           format: timestamp
@@ -217,5 +237,6 @@ components:
       required:
         - id
         - name
+        - author_id
         - created_at
         - updated_at
