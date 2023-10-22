@@ -1,4 +1,5 @@
 openapi: 3.1.3
+x-optic-url: https://app.useoptic.com/organizations/32613bcd-704e-4661-85f0-7b3d75613fb0/apis/NHZgBHDASGWtM3JjjE0m5
 info:
   title: Optic Bookstore Demo Spec
   description: A demo specification for Optic
@@ -195,9 +196,15 @@ components:
           type: string
         author_id:
           type: string
+        type:
+          type: string
+          enum:
+            - fiction
+            - non-fiction
       required:
         - name
         - author_id
+        - type
     BookResponse:
       type: object
       properties:
